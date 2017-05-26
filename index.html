@@ -5,14 +5,12 @@
     <title>移动端自制弹窗</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
 </head>
 <body>
     <input id="btn" type="button" value="点击弹窗" />
-
+    <br />
+    <input id="confirm_btn" type="button" value="对话框" />
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="customalert.js"></script>
@@ -21,7 +19,17 @@
             //title 标题
             //ico 图标
             //con 内容
-            $("body").alertColl({});
+            $("body").alertColl({'confirm':false});
+        });
+        $("#confirm_btn").click(function () {
+            //title 标题
+            //ico 图标
+            //con 内容
+            //confirm 是否是对话框 true 使用回调函数接收返回值
+            $("body").alertColl({ 'confirm': true }, function (r) {
+                console.log(r)
+            });
+            
         });
     </script>
 </body>

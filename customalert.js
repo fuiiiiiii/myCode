@@ -19,6 +19,9 @@
             $(document).on("click", ".alert_fade", function () {
                 $(this).remove();
             });
+            $(document).on("click", ".alert_bor", function () {
+                return false;
+            });
         },
     });
 })(window.jQuery);

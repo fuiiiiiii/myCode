@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
+    <!--事件冒泡测试
+    点击事件 body div1 div2-->
+    <div class="div1" style="border:1px solid red;width:150px;height:150px;">
+
+        <div class="div2" style="border:1px solid black;width:100px;height:100px;"></div>
+
+    </div>
+
+
+
     <input id="btn" type="button" value="点击弹窗" />
     <br />
     <input id="confirm_btn" type="button" value="对话框" />
@@ -19,7 +29,7 @@
             //title 标题
             //ico 图标
             //con 内容
-            $("body").alertColl({'confirm':false});
+            $("body").alertColl({ 'confirm': false });
         });
         $("#confirm_btn").click(function () {
             //title 标题
@@ -29,8 +39,25 @@
             $("body").alertColl({ 'confirm': true }, function (r) {
                 console.log(r)
             });
-            
+
         });
+
+
+
+        $(".div1").click(function () {
+            alert(1);
+        });
+        $(".div2").click(function (e) {
+            e.stopPropagation();//阻止冒泡
+            alert(2);
+        });
+        $("body").click(function () {
+            alert("body");
+        });
+        //测试可得 先弹出2 再弹出1 最后弹出body  猜测  元素见绑定了一样的时间 会由 子元素→父元素依次执行
+
+        //div2 阻止事件冒泡后 div1 和 body 不在触发   点击 div1 body 点击事件任会触发
+
     </script>
 </body>
 </html>
